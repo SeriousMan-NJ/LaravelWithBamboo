@@ -3,7 +3,7 @@
   $branch = 'master';
 @endsetup
 
-@servers(['web' => 'homestead.global.com'])
+@servers(['web' => '192.168.10.11'])
 
 @task('foo-real', ['on' => ['web']])
   echo 'Working on ' . `hostname`
