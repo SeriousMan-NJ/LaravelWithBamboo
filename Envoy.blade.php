@@ -3,15 +3,15 @@
   $branch = 'master';
 @endsetup
 
-@servers(['web' => 'localhost'])
+@servers(['localhost' => 'localhost'])
 
-@task('foo-real', ['on' => ['web']])
-  echo 'Working on ' . `hostname`
+@task('foo', ['on' => ['localhost']])
+  echo 'Working on '`hostname`
   ls -al
 @endtask
 
-@task('pull-on-real')
-    echo 'Working on ' . `hostname`
+@task('deploy-on-localhost')
+    echo 'Working on '`hostname`
     cd {{ $appdir }}
     php artisan down
     git pull origin {{ $branch }}
@@ -19,4 +19,3 @@
     php artisan up
     echo "rev hash: " `git rev-parse --verify HEAD`
 @endtask
-
